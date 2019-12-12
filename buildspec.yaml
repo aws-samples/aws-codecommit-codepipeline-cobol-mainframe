@@ -1,0 +1,33 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.7
+    commands:
+      - echo "This buildspec is based on image - aws/codebuild/standard:2.0"
+      - echo "OS Environment Setup"
+      - apt-get install awscli -y
+      - pip install boto3
+  pre_build:
+    commands:
+      - env
+      - ls
+      - aws s3 cp s3://$BUILD_BUCKET/build.py build.py --quiet
+      - aws s3 cp bankTest s3://$BUILD_BUCKET/$CODEBUILD_START_TIME --recursive --acl bucket-owner-full-control --quiet
+  build:
+    commands:
+      - python build.py
+  post_build:
+    commands:
+      - ls
+#artifacts:
+  #files:
+    # - location
+    # - location
+  #name: $(date +%Y-%m-%d)
+  #discard-paths: yes
+  #base-directory: location
+#cache:
+  #paths:
+    # - paths
