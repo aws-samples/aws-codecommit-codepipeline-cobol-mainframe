@@ -3,7 +3,7 @@ Use AWS CI/CD services and Micro Focus solutions to make agile the mainframe dev
 Mainframes are used by Financial Institutions for critical applications, batch data processing, online transaction processing, and mixed concurrent workloads. Mainframes have non-functional requirements such as performance, security, and resource availability to process all workloads. However, a potential resource deadlock may occur during the parallel development of new programs and subsequent testing. For example, two or more programs needing to access the same DB2 table or VSAM file simultaneously can generate a deadlock situation.
 Thus, the idea of this blogpost is to present a solution to the resource availability issue in the COBOL development process, using Continuous Integration/ Continuous Deployment services (CI/CD) from AWS connected to an IDE such as Eclipse or Visual Studio. In the same pipeline of development, we use a plugin to connect Micro Focus solution called Enterprise Developer, for the step of compiling and running unit and functional tests.
 
-SOLUTION OVERVIEW
+**SOLUTION OVERVIEW**
 
 The developer can use Git-compliant IDEs such as Eclipse or Visual Studio to make changes to COBOL code that are installed on desktops either locally using Amazon EC2 instances or the managed and secure Desktop as a Service (DaaS) solution named Amazon WorkSpaces. 
 
@@ -25,43 +25,43 @@ One of the features CodePipeline provides is to pause pipeline execution pending
 
 All pipeline steps as well as their status and execution times are available for consultation and follow-up in the CodePipeline console.
 
-Following is the summary of the with the flow of execution:
+*Following is the summary of the with the flow of execution:
 
-1- User connects and commits changes to AWS CodeCommit repository.
+**1- User connects and commits changes to AWS CodeCommit repository.
 
-2- AWS CodePipeline starts build pipeline.
+**2- AWS CodePipeline starts build pipeline.
 
-3- AWS CodeBuild sends build Instructions for an AWS Lambda function (addendum).
+**3- AWS CodeBuild sends build Instructions for an AWS Lambda function (addendum).
 
-4- AWS Lambda stores source code in an Amazon S3 bucket.
+**4- AWS Lambda stores source code in an Amazon S3 bucket.
 
-5- AWS Lambda starts an Amazon EC2 instance.
+**5- AWS Lambda starts an Amazon EC2 instance.
 
-6- AWS Lambda sends build instructions to AWS Systems Manager (addendum).
+**6- AWS Lambda sends build instructions to AWS Systems Manager (addendum).
 
-7- AWS System Manager sends the Amazon EC2 instance build instructions (addendum).
+**7- AWS System Manager sends the Amazon EC2 instance build instructions (addendum).
 
-8- The Amazon EC2 instance downloads the source code from the Amazon S3 bucket.
+**8- The Amazon EC2 instance downloads the source code from the Amazon S3 bucket.
 
-9- The Amazon EC2 instance builds artifacts back to the Amazon S3 bucket.
+**9- The Amazon EC2 instance builds artifacts back to the Amazon S3 bucket.
 
-10- The Amazon EC2 instance sends build status to AWS CodeBuild.
+**10- The Amazon EC2 instance sends build status to AWS CodeBuild.
 
-11- AWS CodePipeline sends an email via Amazon SNS to inform the developer that the build is complete and the EC2 instance IP to connect.
+**11- AWS CodePipeline sends an email via Amazon SNS to inform the developer that the build is complete and the EC2 instance IP to connect.
 
-12- AWS CodePipeline begins the deployment process.
+**12- AWS CodePipeline begins the deployment process.
 
-13- AWS CodeDeploy sends approved source code to bucket S3.
+**13- AWS CodeDeploy sends approved source code to bucket S3.
 
 With approved source code, developer can be sent back to the mainframe to perform the final recompilation through the connection with Micro Focus Changeman ZMF, for example. Another alternative is to use Micro Focus Enterprise Test Server for integration testing between programs before send back to mainframe.
 
-ADDENDUM:
+**ADDENDUM:
 
-COBOL COMPILATION INSTRUCTIONS:
+*COBOL COMPILATION INSTRUCTIONS:
 
 Following are the commands the developer can use to compile COBOL programs via command line using Micro Focus Enterprise Developer. All commands have been entered into the CodeBuild build script:
  
-For Windows: 
+*For Windows: 
 
 > cobol <nome-programa>.cbl,,, preprocess(EXCI) USE(diretivas_compilacao.dir);
  
@@ -110,7 +110,7 @@ SET COBCPY=c:\build\copybook
 
 For some non-COBOL/CICS programs, such as BANKDEMO's UDATECNV.CBL and SSSECUREP.CBL, simply run the commands without the “preprocess (EXCI)” directive. This directive is responsible for calling the CICS precompiler.
 
-COMMANDS FOR GENERATING DLL FILES:
+*COMMANDS FOR GENERATING DLL FILES:
 
 The developer must execute the command “cbllink” to produce a dynamic link library file of programs. Example:
 
@@ -120,7 +120,7 @@ The “-d” parameter indicates that a .DLL file is generated. The output from 
  
 After that, the developer needs to copy them to the destination directory (... \ loadlib) only the result of the link, ie, the name_pgm.DLL file
 
-COMMANDS TO START MICRO FOCUS SERVICES:
+*COMMANDS TO START MICRO FOCUS SERVICES:
 
 After the files are compiled, you can start MicroFocus services and the BANKDEMO server on the EC2 instance to run the tests because Micro Focus Enterprise Developer already contains the Enterprise Server.
 
