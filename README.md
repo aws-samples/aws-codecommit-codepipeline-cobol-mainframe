@@ -25,43 +25,43 @@ One of the features CodePipeline provides is to pause pipeline execution pending
 
 All pipeline steps as well as their status and execution times are available for consultation and follow-up in the CodePipeline console.
 
-*Following is the summary of the with the flow of execution:
+*Following is the summary of the with the flow of execution:*
 
-**1- User connects and commits changes to AWS CodeCommit repository.
+**1- User connects and commits changes to AWS CodeCommit repository.**
 
-**2- AWS CodePipeline starts build pipeline.
+**2- AWS CodePipeline starts build pipeline.**
 
-**3- AWS CodeBuild sends build Instructions for an AWS Lambda function (addendum).
+**3- AWS CodeBuild sends build Instructions for an AWS Lambda function (addendum).**
 
-**4- AWS Lambda stores source code in an Amazon S3 bucket.
+**4- AWS Lambda stores source code in an Amazon S3 bucket.**
 
-**5- AWS Lambda starts an Amazon EC2 instance.
+**5- AWS Lambda starts an Amazon EC2 instance.**
 
-**6- AWS Lambda sends build instructions to AWS Systems Manager (addendum).
+**6- AWS Lambda sends build instructions to AWS Systems Manager (addendum).**
 
-**7- AWS System Manager sends the Amazon EC2 instance build instructions (addendum).
+**7- AWS System Manager sends the Amazon EC2 instance build instructions (addendum).**
 
-**8- The Amazon EC2 instance downloads the source code from the Amazon S3 bucket.
+**8- The Amazon EC2 instance downloads the source code from the Amazon S3 bucket.**
 
-**9- The Amazon EC2 instance builds artifacts back to the Amazon S3 bucket.
+**9- The Amazon EC2 instance builds artifacts back to the Amazon S3 bucket.**
 
-**10- The Amazon EC2 instance sends build status to AWS CodeBuild.
+**10- The Amazon EC2 instance sends build status to AWS CodeBuild.**
 
-**11- AWS CodePipeline sends an email via Amazon SNS to inform the developer that the build is complete and the EC2 instance IP to connect.
+**11- AWS CodePipeline sends an email via Amazon SNS to inform the developer that the build is complete and the EC2 instance IP to connect.**
 
-**12- AWS CodePipeline begins the deployment process.
+**12- AWS CodePipeline begins the deployment process.**
 
 **13- AWS CodeDeploy sends approved source code to bucket S3.
 
 With approved source code, developer can be sent back to the mainframe to perform the final recompilation through the connection with Micro Focus Changeman ZMF, for example. Another alternative is to use Micro Focus Enterprise Test Server for integration testing between programs before send back to mainframe.
 
-**ADDENDUM:
+**ADDENDUM:**
 
-*COBOL COMPILATION INSTRUCTIONS:
+*COBOL COMPILATION INSTRUCTIONS:*
 
 Following are the commands the developer can use to compile COBOL programs via command line using Micro Focus Enterprise Developer. All commands have been entered into the CodeBuild build script:
  
-*For Windows: 
+*For Windows:*
 
 > cobol <nome-programa>.cbl,,, preprocess(EXCI) USE(diretivas_compilacao.dir);
  
@@ -93,7 +93,7 @@ If using Windows, the developer needs to run the cobol command in the directory 
  
 The build script contains the environment variables required to run the BANKDEMO server:
 
-SET COBDIR=C:\Program Files (x86)\Micro Focus\Enterprise Developer\;%COBDIR%
+*SET COBDIR=C:\Program Files (x86)\Micro Focus\Enterprise Developer\;%COBDIR%
 SET PATH=C:\Program Files (x86)\Micro Focus\Enterprise Developer\bin64\;C:\Program Files (x86)\Micro Focus\Enterprise Developer\binn64\;C:\Program Files (x86)\Micro Focus\Enterprise Developer\bin\;C:\Program Files (x86)\Micro Focus\Enterprise Developer\AdoptOpenJDK\bin;C:\Program Files (x86)\Micro Focus\Enterprise Developer\AdoptRedis;%PATH%
 SET LIB=C:\Program Files (x86)\Micro Focus\Enterprise Developer\lib64\;%LIB%
 SET COBCPY=%COBCPY%;C:\Program Files (x86)\Micro Focus\Enterprise Developer\cpylib\;C:\Program Files (x86)\Micro Focus\Enterprise Developer\cpylib\basecl
@@ -106,11 +106,11 @@ SET MFDBFH_SCRIPT_DIR=C:\Program Files (x86)\Micro Focus\Enterprise Developer\et
 SET MFPLI_PRODUCT_DIR=C:\Program Files (x86)\Micro Focus\Enterprise Developer\
 SET TXDIR=C:\Program Files (x86)\Micro Focus\Enterprise Developer\
 SET COBREG_64_PARSED=True
-SET COBCPY=c:\build\copybook
+SET COBCPY=c:\build\copybook*
 
 For some non-COBOL/CICS programs, such as BANKDEMO's UDATECNV.CBL and SSSECUREP.CBL, simply run the commands without the “preprocess (EXCI)” directive. This directive is responsible for calling the CICS precompiler.
 
-*COMMANDS FOR GENERATING DLL FILES:
+*COMMANDS FOR GENERATING DLL FILES:*
 
 The developer must execute the command “cbllink” to produce a dynamic link library file of programs. Example:
 
@@ -120,7 +120,7 @@ The “-d” parameter indicates that a .DLL file is generated. The output from 
  
 After that, the developer needs to copy them to the destination directory (... \ loadlib) only the result of the link, ie, the name_pgm.DLL file
 
-*COMMANDS TO START MICRO FOCUS SERVICES:
+*COMMANDS TO START MICRO FOCUS SERVICES:*
 
 After the files are compiled, you can start MicroFocus services and the BANKDEMO server on the EC2 instance to run the tests because Micro Focus Enterprise Developer already contains the Enterprise Server.
 
