@@ -106,18 +106,6 @@ def get_artifacts(s3, artifact, bucket_pipe, folder_pipe):
         bucket_pipe, 
         folder_pipe + '/artifacts.zip')
 
-    #     with zipfile.ZipFile(tmp_file.name, 'r') as zip:
-    #         return zip.read(file_in_zip)   
-
-    # s3_pipe.upload_fileobj(
-    #     Fileobj=gzip.GzipFile(
-    #         None,
-    #         'rb',
-    #         fileobj=BytesIO(
-    #             s3.get_object(Bucket=bucket, Key=key)['Body'].read())),
-    #     Bucket=bucket_pipe,
-    #     Key=folder_pipe)
-
 def get_user_params(job_data):
     """Decodes the JSON user parameters and validates the required properties.
     
