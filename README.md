@@ -1,7 +1,7 @@
 # ***Use AWS CI/CD services and Micro Focus solutions to make agile the mainframe development environment in Financial Institutions***
 
-Mainframes are used by Financial Institutions for critical applications, batch data processing, online transaction processing, and mixed concurrent workloads. Mainframes have non-functional requirements such as performance, security, and resource availability to process all workloads. However, a potential resource deadlock may occur during the parallel development of new programs and subsequent testing. For example, two or more programs needing to access the same DB2 table or VSAM file simultaneously can generate a deadlock situation.
-Thus, the idea of this blogpost is to present a solution to the resource availability issue in the COBOL development process, using Continuous Integration/ Continuous Deployment services (CI/CD) from AWS connected to an IDE such as Eclipse or Visual Studio. In the same pipeline of development, we use a plugin to connect Micro Focus solution called Enterprise Developer, for the step of compiling and running unit and functional tests.
+**Mainframes** are used by **Financial Institutions** for critical applications, batch data processing, online transaction processing, and mixed concurrent workloads. Mainframes have non-functional requirements such as performance, security, and resource availability to process all workloads. However, a potential resource deadlock may occur during the parallel development of new programs and subsequent testing. For example, two or more programs needing to access the same DB2 table or VSAM file simultaneously can generate a deadlock situation.
+Thus, the idea of this blogpost is to present a solution to the resource availability issue in the COBOL development process, using **Continuous Integration/Continuous Deployment services (CI/CD) from AWS** connected to an IDE such as Eclipse or Visual Studio. In the same pipeline of development, we use a plugin to connect **Micro Focus solution called Enterprise Developer**, for the step of compiling and running unit and functional tests.
 
 **SOLUTION OVERVIEW**
 
@@ -69,7 +69,7 @@ The above command references the file named "diretivas_compilacao.dir". This fil
 
 Below is the content of the directive_compilacao.dir file:
 
-NOOBJ
+*NOOBJ
 DIALECT"ENTCOBOL"
 COPYEXT"cpy,cbl"
 SOURCETABSTOP"4"
@@ -87,7 +87,7 @@ ANIM
 ERRFORMAT(2)
 NOQUERY
 NOERRQ
-STDERR
+STDERR*
  
 If using Windows, the developer needs to run the cobol command in the directory where the source code is. The developer needs to copy to the same directory the copybooks used by these programs (.cpy extension files), or point to the directory containing the copybooks through the COBCPY environment variable.
  
