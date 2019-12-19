@@ -22,6 +22,10 @@ ec2_client = boto3.client('ec2')
 ssm_client = boto3.client('ssm')
 code_pipeline = boto3.client('codepipeline')
 
+#The S3 https path to the build_ssm.bat file.
+#this is the script that the EC2 will run to execute the build process
+script_source = os.environ['SCRIPT_SOURCE']
+
 def find_artifact(artifacts, name):
     """Finds the artifact 'name' among the 'artifacts'
     
@@ -235,7 +239,7 @@ def lambda_handler(event, context):
                 DocumentName="AWS-RunRemoteScript",
                 Parameters={
                     "sourceType":["S3"],
-                    "sourceInfo":["{\"path\":\"https://codecommit-535519225013-us-west-2.s3-us-west-2.amazonaws.com/build_ssm.bat\"}"],
+                    "sourceInfo":[("{\"path\":\"%s\"}" % (script_source))],
                     "commandLine":[("build_ssm.bat %s %s %s %s %s" % (
                         params['bucket'], 
                         job_id,
