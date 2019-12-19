@@ -51,7 +51,7 @@ All pipeline steps as well as their status and execution times are available for
 
 **12- AWS CodePipeline begins the deployment process.**
 
-**13- AWS CodeDeploy sends approved source code to bucket S3.
+**13- AWS CodeDeploy sends approved source code to bucket S3.**
 
 With approved source code, developer can be sent back to the mainframe to perform the final recompilation through the connection with Micro Focus Changeman ZMF, for example. Another alternative is to use Micro Focus Enterprise Test Server for integration testing between programs before send back to mainframe.
 
