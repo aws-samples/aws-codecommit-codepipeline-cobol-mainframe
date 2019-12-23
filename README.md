@@ -19,9 +19,9 @@ Remote command execution, used to perform the COBOL code validation and compilat
 
 When the process is finished, the script sends the compiled files and processing logs to the S3 bucket. That way, other processes may use this information for processing.
 
-The next step in the process is waiting for the user to perform their unit and functional tests, with Micro Focus Enterprise Developer accessing the already running EC2 instance and setting up the emulation environment, including the application version. newly compiled. To make this possible, the developer receives an email announcement (Figure 9) sent by the platform Amazon SNS together with Amazon SES.
+The next step in the process is waiting for the user to perform their unit and functional tests, with Micro Focus Enterprise Developer accessing the already running EC2 instance and setting up the emulation environment, including the application version. newly compiled. To make this possible, the developer receives an email announcement sent by the platform Amazon SNS together with Amazon SES.
 
-One of the features CodePipeline provides is to pause pipeline execution pending user approval (Figure 10). Once the user approves, the pipeline continues to perform the next steps.
+One of the features CodePipeline provides is to pause pipeline execution pending user approval. Once the user approves, the pipeline continues to perform the next steps.
 
 All pipeline steps as well as their status and execution times are available for consultation and follow-up in the CodePipeline console.
 
@@ -140,7 +140,7 @@ Following are links to documentation that gives more details on command lines (h
       
 Check that the BANKDEMO server is started in the browser (https://localhost:86)
 
-Set up the directory structure with the “Transaction Path” and “Map Path” fields for CICS programs and the “JES Program path” field for Batch programs (Figure X). In these fields, the developer needs to point to the directories where they copied the .DLLs files of programs.
+Set up the directory structure with the “Transaction Path” and “Map Path” fields for CICS programs and the “JES Program path” field for Batch programs. In these fields, the developer needs to point to the directories where they copied the .DLLs files of programs.
 
 
 ## License
