@@ -11,7 +11,7 @@ For example, download the Toolkit for Eclipse to connect to the AWS CodeCommit r
 
 The automated build process uses an EC2 server as its environment, to run and for that server to be automatically configured, the process uses the functionality of execution templates. Execution templates allow you to store execution parameters so that you do not have to specify them each time you run an instance. For example, an execution template might contain the Operating System, instance type, permissions, and network settings that you typically use to run instances.
 
-Using the execution template described above, the process creates an EC2 instance according to figure 5, which will be used in the code compilation process and also in the emulation of the mainframe environment. This EC2 instance has Micro Focus Enterprise Developer installed, which contains the COBOL compiler and Enterprise Server to perform the required tests. Attached to this blogpost are the main commands used to compile COBOL code.
+Using the execution template, the process creates an EC2 instance, which will be used in the code compilation process and also in the emulation of the mainframe environment. This EC2 instance has Micro Focus Enterprise Developer installed, which contains the COBOL compiler and Enterprise Server to perform the required tests. Attached to this blogpost are the main commands used to compile COBOL code.
 
 The process launches the EC2 instance using the execution template and waits until this new instance is connected to the management platform AWS System Manager. When the connection to the management platform is complete, the process uses the functionality of Run Commands remotely to begin the validation and compilation phase of COBOL code.
 
