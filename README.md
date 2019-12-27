@@ -73,6 +73,7 @@ The above command references the file named "diretivas_compilacao.dir". This fil
 
 Below is the content of the directive_compilacao.dir file:
 
+-
 *NOOBJ
 DIALECT"ENTCOBOL"
 COPYEXT"cpy,cbl"
