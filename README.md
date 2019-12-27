@@ -137,7 +137,9 @@ Micro Focus CES daemon and Directory Server services must be started:
 **5- >net start "Micro Focus XDB Server for ETD 5.0"**
 
  
-We enter the command lines to activate the server, for example BANKDEMO, in the build script. The command is basically: > casstart /r <name-of-server>. In the case of the BANKDEMO example, the command used is: > casstart /rBANKDEMO
+We enter the command lines to activate the server, for example BANKDEMO, in the build script. The command is basically: > casstart /r <name-of-server>. In the case of the BANKDEMO example, the command used is: 
+ 
+ **> casstart /rBANKDEMO**
 
  
 Following are links to documentation that gives more details on command lines (https://www.microfocus.com/documentation/enterprise-developer/ed50pu2/ED-Eclipse/HRCMRHCOML01.html).
