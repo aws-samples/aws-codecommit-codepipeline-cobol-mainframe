@@ -126,11 +126,11 @@ After the files are compiled, you can start MicroFocus services and the BANKDEMO
 
 Micro Focus CES daemon and Directory Server services must be started:
 
-net start mfcesd
-net start mf_CCITCP2
-net start "EA Integration Service Host"
-net start escwa
-net start "Micro Focus XDB Server for ETD 5.0"
+**- net start mfcesd**
+**- net start mf_CCITCP2**
+**- net start "EA Integration Service Host"**
+**- net start escwa**
+**- net start "Micro Focus XDB Server for ETD 5.0"**
 
  
 We enter the command lines to activate the server, for example BANKDEMO, in the build script. The command is basically: > casstart /r <name-of-server>. In the case of the BANKDEMO example, the command used is: > casstart /rBANKDEMO
