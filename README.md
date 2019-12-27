@@ -1,4 +1,4 @@
-# ***Use AWS CI/CD services and Micro Focus solutions to make agile the mainframe development environment in Financial Institutions***
+# ***Enabling mainframe automated code build and deployment for financial institutions using AWS and Micro Focus solutions***
 
 
 **Mainframes** are used by **Financial Institutions** for critical applications, batch data processing, online transaction processing, and mixed concurrent workloads. Mainframes have non-functional requirements such as performance, security, and resource availability to process all workloads. However, a potential resource deadlock may occur during the parallel development of new programs and subsequent testing. For example, two or more programs needing to access the same DB2 table or VSAM file simultaneously can generate a deadlock situation.
