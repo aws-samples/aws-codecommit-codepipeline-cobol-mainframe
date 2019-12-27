@@ -1,6 +1,5 @@
 # ***Use AWS CI/CD services and Micro Focus solutions to make agile the mainframe development environment in Financial Institutions***
 
-![alt text](https://github.com/aws-samples/aws-codecommit-codepipeline-cobol-mainframe/blob/master/MainframePipeline-8.jpg)
 
 **Mainframes** are used by **Financial Institutions** for critical applications, batch data processing, online transaction processing, and mixed concurrent workloads. Mainframes have non-functional requirements such as performance, security, and resource availability to process all workloads. However, a potential resource deadlock may occur during the parallel development of new programs and subsequent testing. For example, two or more programs needing to access the same DB2 table or VSAM file simultaneously can generate a deadlock situation.
 Thus, the idea of this blogpost is to present a solution to the resource availability issue in the COBOL development process, using **Continuous Integration/Continuous Deployment services (CI/CD) from AWS** connected to an IDE such as Eclipse or Visual Studio. In the same pipeline of development, we use a plugin to connect **Micro Focus solution called Enterprise Developer**, for the step of compiling and running unit and functional tests.
@@ -26,6 +25,8 @@ The next step in the process is waiting for the user to perform their unit and f
 One of the features CodePipeline provides is to pause pipeline execution pending user approval. Once the user approves, the pipeline continues to perform the next steps.
 
 All pipeline steps as well as their status and execution times are available for consultation and follow-up in the CodePipeline console.
+
+![alt text](https://github.com/aws-samples/aws-codecommit-codepipeline-cobol-mainframe/blob/master/MainframePipeline-8.jpg)
 
 *Following is the summary of the with the flow of execution:*
 
