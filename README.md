@@ -73,41 +73,24 @@ The above command references the file named "diretivas_compilacao.dir". This fil
 
 Below is the content of the directive_compilacao.dir file:
 
-*- NOOBJ
-
+*NOOBJ
 DIALECT"ENTCOBOL"
-
 COPYEXT"cpy,cbl"
-
 SOURCETABSTOP"4"
-
 COLLECTION"BANKTEST"
-
 NOCOBOLDIR
-
 MAX-ERROR"100"
-
 LIST()
-
 NOPANVALET NOLIBRARIAN
-
 WARNING"1"
-
 EXITPROGRAM"GOBACK"
-
 SOURCEFORMAT"fixed"
 CHARSET"EBCDIC"
-
 CICSECM()
-
 ANIM
-
 ERRFORMAT(2)
-
 NOQUERY
-
 NOERRQ
-
 STDERR*
  
 If using Windows, the developer needs to run the cobol command in the directory where the source code is. The developer needs to copy to the same directory the copybooks used by these programs (.cpy extension files), or point to the directory containing the copybooks through the COBCPY environment variable.
