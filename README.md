@@ -73,17 +73,17 @@ The above command references the file named "diretivas_compilacao.dir". This fil
 
 Below is the content of the directive_compilacao.dir file:
 
-*NOOBJ
+*-NOOBJ-
 
-DIALECT"ENTCOBOL"
+-DIALECT"ENTCOBOL"
 
-COPYEXT"cpy,cbl"
+-COPYEXT"cpy,cbl"
 
-SOURCETABSTOP"4"
+-SOURCETABSTOP"4"
 
-COLLECTION"BANKTEST"
+-COLLECTION"BANKTEST"
 
-NOCOBOLDIR
+-NOCOBOLDIR
 
 MAX-ERROR"100"
 
